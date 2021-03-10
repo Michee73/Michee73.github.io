@@ -1,0 +1,15 @@
+{
+  "applinks": {
+      "details": [
+           {
+             "appIDs": [ "62D9RR5D7M.com.gekko.BackToWorkApp" ],
+             "components": [
+               {
+                  "/": "/*",
+                  "comment": "Matches any URL whose path starts with /"
+               }
+             ]
+           }
+       ]
+   }
+}
