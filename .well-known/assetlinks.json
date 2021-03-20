@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.uintmax.backtowork",
+    "sha256_cert_fingerprints":
+    ["A9:32:42:B8:EF:08:F9:18:98:5F:14:87:36:E5:BD:AC:1C:38:D0:D5:59:4F:2E:A6:4A:37:A0:9C:4C:EC:48:3C"]
+  }
+}]
