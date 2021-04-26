@@ -101,6 +101,8 @@
             $id("info").setAttribute("style", "");
             if (isValid) {
               $id("status").setAttribute("src", "valid.svg");
+              $id("validUntil").style.color = "#49DC2C";
+              $id("timestamp").style.color = "#49DC2C";
             } else {
               $id("status").setAttribute("src", "fail.svg");
               $id("validUntil").style.color = "#E5BB0D";
