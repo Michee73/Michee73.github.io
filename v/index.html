@@ -82,8 +82,13 @@
             }
 
             var validUntil = new Date(data.validUntil);
+            var qrCreation = new Date(data.timestamp);
             var now = new Date();
-            var isValid = validUntil > now;
+            var oneDay = 24 * 60 * 60 * 1000;
+
+            var isOneDayOld = now - qrCreation > oneDay;
+            var isExpired = validUntil < now;
+            var isValid = !isExpired && !isOneDayOld;
 
             $id("title").innerHTML = data.title || "N/A";
 
@@ -92,7 +97,7 @@
               : "N/A";
 
             $id("timestamp").innerHTML = data.timestamp
-              ? convertDate(new Date(data.timestamp))
+              ? convertDate(qrCreation)
               : "N/A";
 
             $id("publisherName").innerHTML = data.publisherName || "N/A";
@@ -105,7 +110,14 @@
               $id("timestamp").style.color = "#49DC2C";
             } else {
               $id("status").setAttribute("src", "fail.svg");
-              $id("validUntil").style.color = "#E5BB0D";
+
+              if (isExpired) {
+                $id("validUntil").style.color = "#E5BB0D";
+              }
+
+              if (isOneDayOld) {
+                $id("timestamp").style.color = "#E5BB0D";
+              }
             }
           })
           .catch((e) => {
@@ -125,9 +137,9 @@
         <dd id="title">......</dd>
         <dt>Valid until:</dt>
         <dd id="validUntil">......</dd>
-        <dt>QR Creation:</dt>
+        <dt>QR creation:</dt>
         <dd id="timestamp">......</dd>
-        <dt>Published By:</dt>
+        <dt>Published by:</dt>
         <dd id="publisherName">......</dd>
       </dl>
     </main>
